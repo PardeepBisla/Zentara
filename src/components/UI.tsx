@@ -14,9 +14,9 @@ export const LuxuryCard: React.FC<CardProps> = ({ children, className, delay = 0
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.6, delay }}
+      transition={{ duration: 0.8, delay, ease: [0.21, 0.45, 0.32, 0.9] }}
       className={cn(
-        "bg-white p-8 rounded-2xl border border-gold-100/50 shadow-sm hover:shadow-xl hover:border-gold-200 transition-all duration-500",
+        "glass-card p-10 rounded-[2rem] transition-all duration-700 group",
         className
       )}
     >
@@ -27,23 +27,24 @@ export const LuxuryCard: React.FC<CardProps> = ({ children, className, delay = 0
 
 export const GoldButton: React.FC<{
   children: React.ReactNode;
-  variant?: 'primary' | 'secondary' | 'outline';
+  variant?: 'primary' | 'secondary' | 'outline' | 'obsidian';
   className?: string;
   onClick?: () => void;
 }> = ({ children, variant = 'primary', className, onClick }) => {
   const variants = {
-    primary: "bg-gold-500 text-white hover:bg-gold-600 shadow-lg shadow-gold-500/20",
-    secondary: "bg-slate-900 text-white hover:bg-slate-800",
-    outline: "border-2 border-gold-500 text-gold-600 hover:bg-gold-50"
+    primary: "gold-gradient text-white shadow-[0_10px_30px_-10px_rgba(184,141,41,0.3)] hover:shadow-[0_15px_35px_-10px_rgba(184,141,41,0.4)]",
+    secondary: "bg-white text-slate-900 border border-gold-100 hover:border-gold-300",
+    outline: "border border-gold-400/30 text-gold-700 hover:border-gold-500 hover:bg-gold-50/30",
+    obsidian: "bg-obsidian text-gold-100 border border-gold-500/20 hover:border-gold-500/50 shadow-2xl"
   };
 
   return (
     <motion.button
-      whileHover={{ scale: 1.02 }}
+      whileHover={{ y: -2 }}
       whileTap={{ scale: 0.98 }}
       onClick={onClick}
       className={cn(
-        "px-8 py-4 rounded-full font-semibold transition-all duration-300",
+        "px-10 py-4 rounded-full font-medium tracking-wide transition-all duration-300 text-sm uppercase",
         variants[variant],
         className
       )}

@@ -9,36 +9,50 @@
   --color-gold-100: #f9f1d6;
   --color-gold-200: #f1e0a8;
   --color-gold-300: #e7c971;
-  --color-gold-400: #ddae41;
-  --color-gold-500: #d4af35;
-  --color-gold-600: #b88d29;
-  --color-gold-700: #966b24;
-  --color-gold-800: #7c5722;
-  --color-gold-900: #694a20;
-  --color-gold-950: #3c280f;
+  --color-gold-400: #c5a059;
+  --color-gold-500: #b88d29;
+  --color-gold-600: #a67c25;
+  --color-gold-700: #8a641f;
+  --color-gold-800: #70511a;
+  --color-gold-900: #5c4216;
+  --color-gold-950: #33240c;
 
-  --color-luxury-beige: #f8f7f2;
+  --color-obsidian: #0a0a0b;
+  --color-champagne: #f4f1ea;
+  --color-luxury-beige: #fcfbf7;
 }
 
 @layer base {
   body {
-    @apply bg-luxury-beige text-slate-900 antialiased;
+    @apply bg-luxury-beige text-slate-900 antialiased selection:bg-gold-200 selection:text-gold-900;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 150px 150px;
+    background-blend-mode: overlay;
   }
   
   h1, h2, h3, h4, .font-serif {
-    @apply font-serif;
+    @apply font-serif tracking-tight;
   }
 }
 
 .glass-card {
-  @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-sm;
+  @apply bg-white/40 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.02)];
 }
 
 .gold-gradient {
-  background: linear-gradient(135deg, #d4af35 0%, #f1e0a8 50%, #b88d29 100%);
+  background: linear-gradient(135deg, #c5a059 0%, #f1e0a8 50%, #a67c25 100%);
 }
 
 .gold-text-gradient {
   @apply bg-clip-text text-transparent;
-  background-image: linear-gradient(135deg, #b88d29 0%, #d4af35 50%, #966b24 100%);
+  background-image: linear-gradient(135deg, #8a641f 0%, #c5a059 50%, #8a641f 100%);
+}
+
+.obsidian-gradient {
+  background: radial-gradient(circle at top left, #1a1a1c 0%, #0a0a0b 100%);
+}
+
+.soft-glow {
+  box-shadow: 0 0 80px -20px rgba(184, 141, 41, 0.15);
 }
