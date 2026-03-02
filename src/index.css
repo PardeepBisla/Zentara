@@ -32,7 +32,11 @@
   }
   
   h1, h2, h3, h4, .font-serif {
-    @apply font-serif tracking-tight;
+    @apply font-serif tracking-tighter;
+  }
+
+  body, p, .font-sans {
+    @apply font-sans leading-relaxed;
   }
 }
 

@@ -28,11 +28,11 @@ export default function App() {
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-luxury-beige/60 backdrop-blur-xl border-b border-gold-100/30">
         <div className="max-w-7xl mx-auto px-8 h-24 flex items-center justify-between">
-          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3">
             <div className="w-10 h-10 obsidian-gradient rounded-full flex items-center justify-center text-gold-400 border border-gold-500/20">
               <Diamond size={20} strokeWidth={1.5} />
             </div>
-            <span className="text-2xl font-serif font-bold tracking-tighter uppercase">Zentara</span>
+            <span className="text-2xl font-serif font-bold tracking-[0.2em] uppercase">Zentara</span>
           </div>
 
           <div className="hidden md:flex items-center gap-12">
@@ -120,14 +120,22 @@ export default function App() {
 
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            animate={{ 
+              opacity: 1, 
+              scale: 1,
+              y: [0, -15, 0]
+            }}
+            transition={{ 
+              opacity: { duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] },
+              scale: { duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] },
+              y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+            }}
             className="relative"
           >
             <div className="absolute -inset-4 bg-gold-500/5 blur-3xl rounded-full" />
             <BeforeAfterSlider 
               beforeImage="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&q=80&w=1000"
-              afterImage="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=1000"
+              afterImage="/input_file_0.png"
               className="aspect-[4/5] md:aspect-square rounded-[3rem] shadow-2xl border border-white/20"
             />
           </motion.div>
@@ -140,9 +148,9 @@ export default function App() {
           <p className="text-center text-slate-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-16">
             Trusted by the world's most prestigious maisons
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-16 md:gap-32 opacity-30 grayscale contrast-125">
-            {['VOGUE', 'TIFFANY', 'CARTIER', 'BULGARI', 'PANDORA'].map(brand => (
-              <span key={brand} className="text-4xl font-serif font-black tracking-tighter">{brand}</span>
+          <div className="flex flex-wrap justify-center items-center gap-16 md:gap-32 opacity-20 grayscale contrast-150">
+            {['VOGUE', 'TIFFANY & CO.', 'CARTIER', 'BULGARI', 'PANDORA'].map(brand => (
+              <span key={brand} className="text-3xl md:text-4xl font-serif font-black tracking-tighter italic">{brand}</span>
             ))}
           </div>
         </div>
@@ -174,7 +182,7 @@ export default function App() {
                 <div className="w-14 h-14 obsidian-gradient rounded-2xl flex items-center justify-center text-gold-400 mb-10 group-hover:scale-110 transition-transform duration-500">
                   <step.icon size={24} strokeWidth={1.5} />
                 </div>
-                <h3 className="text-3xl font-serif font-bold mb-6 tracking-tight">{step.title}</h3>
+                <h3 className="text-3xl font-serif font-bold mb-6 tracking-tighter">{step.title}</h3>
                 <p className="text-slate-500 leading-relaxed font-light">{step.desc}</p>
               </LuxuryCard>
             ))}
@@ -203,13 +211,13 @@ export default function App() {
             {[
               { 
                 before: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=800",
-                after: "https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&q=80&w=800",
+                after: "/input_file_1.png",
                 label: "High Jewelry"
               },
               { 
                 before: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80&w=800",
-                after: "https://images.unsplash.com/photo-1598560917505-59a3ad559071?auto=format&fit=crop&q=80&w=800",
-                label: "Horology"
+                after: "/input_file_0.png",
+                label: "Bespoke Timepieces"
               }
             ].map((item, i) => (
               <motion.div 
@@ -249,17 +257,21 @@ export default function App() {
                 ].map((feature, i) => (
                   <motion.div 
                     key={i}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
+                    transition={{ 
+                      duration: 0.8, 
+                      delay: i * 0.15,
+                      ease: [0.16, 1, 0.3, 1] 
+                    }}
                     className="flex gap-8 group"
                   >
                     <div className="shrink-0 w-14 h-14 glass-card rounded-2xl flex items-center justify-center text-gold-600 group-hover:bg-gold-500 group-hover:text-white transition-all duration-500">
                       <feature.icon size={24} strokeWidth={1.5} />
                     </div>
                     <div>
-                      <h4 className="text-2xl font-serif font-bold mb-3 tracking-tight">{feature.title}</h4>
+                      <h4 className="text-2xl font-serif font-bold mb-3 tracking-tighter">{feature.title}</h4>
                       <p className="text-slate-500 leading-relaxed font-light">{feature.desc}</p>
                     </div>
                   </motion.div>
@@ -276,7 +288,7 @@ export default function App() {
               <div className="absolute -inset-10 bg-gold-200/20 blur-[100px] rounded-full" />
               <div className="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-3xl border border-white/40 relative z-10">
                 <img 
-                  src="https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&q=80&w=1000" 
+                  src="/input_file_0.png" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />
@@ -340,7 +352,7 @@ export default function App() {
                     Most Prestigious
                   </div>
                 )}
-                <h3 className="text-3xl font-serif font-bold mb-4 tracking-tight">{plan.name}</h3>
+                <h3 className="text-3xl font-serif font-bold mb-4 tracking-tighter">{plan.name}</h3>
                 <div className="flex items-baseline gap-2 mb-12">
                   <span className="text-5xl font-bold">₹{
                     (billingCycle === 'yearly' ? Math.floor(plan.price * 0.8) : plan.price).toLocaleString('en-IN')
@@ -412,7 +424,7 @@ export default function App() {
                 <div className="w-8 h-8 obsidian-gradient rounded-full flex items-center justify-center text-gold-400 border border-gold-500/20">
                   <Diamond size={16} strokeWidth={1.5} />
                 </div>
-                <span className="text-2xl font-serif font-bold tracking-tighter uppercase">Zentara</span>
+                <span className="text-2xl font-serif font-bold tracking-[0.2em] uppercase">Zentara</span>
               </div>
               <p className="text-slate-500 text-sm leading-relaxed font-light mb-10">
                 The premier AI photography studio for fine jewelry and luxury horology.
