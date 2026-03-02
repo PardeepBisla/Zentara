@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+  
+  --color-gold-50: #fdfaf0;
+  --color-gold-100: #f9f1d6;
+  --color-gold-200: #f1e0a8;
+  --color-gold-300: #e7c971;
+  --color-gold-400: #ddae41;
+  --color-gold-500: #d4af35;
+  --color-gold-600: #b88d29;
+  --color-gold-700: #966b24;
+  --color-gold-800: #7c5722;
+  --color-gold-900: #694a20;
+  --color-gold-950: #3c280f;
+
+  --color-luxury-beige: #f8f7f2;
+}
+
+@layer base {
+  body {
+    @apply bg-luxury-beige text-slate-900 antialiased;
+  }
+  
+  h1, h2, h3, h4, .font-serif {
+    @apply font-serif;
+  }
+}
+
+.glass-card {
+  @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-sm;
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, #d4af35 0%, #f1e0a8 50%, #b88d29 100%);
+}
+
+.gold-text-gradient {
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(135deg, #b88d29 0%, #d4af35 50%, #966b24 100%);
+}
