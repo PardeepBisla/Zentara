@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
+import Dashboard from './pages/Dashboard';
 import { 
   Diamond, 
   Upload, 
@@ -20,6 +22,17 @@ import { LuxuryCard, GoldButton } from './components/UI';
 import { cn } from './lib/utils';
 
 export default function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </Router>
+  );
+}
+
+function LandingPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
 
@@ -45,9 +58,11 @@ export default function App() {
                 {item}
               </a>
             ))}
-            <GoldButton variant="obsidian" className="px-8 py-3 text-[10px]">
-              Get Started
-            </GoldButton>
+            <Link to="/dashboard">
+              <GoldButton variant="obsidian" className="px-8 py-3 text-[10px]">
+                Get Started
+              </GoldButton>
+            </Link>
           </div>
 
           <button className="md:hidden text-slate-900" onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -109,9 +124,11 @@ export default function App() {
               Cartier-level visuals, generated in seconds from your smartphone.
             </p>
             <div className="flex flex-col sm:flex-row gap-6">
-              <GoldButton className="px-12 py-6">
-                Start Creating
-              </GoldButton>
+              <Link to="/dashboard">
+                <GoldButton className="px-12 py-6">
+                  Start Creating
+                </GoldButton>
+              </Link>
               <GoldButton variant="outline" className="px-12 py-6">
                 View Showcase
               </GoldButton>
@@ -403,9 +420,11 @@ export default function App() {
                 Experience the Zentara standard today.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-6">
-                <GoldButton className="px-16 py-7 text-base">
-                  Start Your Journey
-                </GoldButton>
+                <Link to="/dashboard">
+                  <GoldButton className="px-16 py-7 text-base">
+                    Start Your Journey
+                  </GoldButton>
+                </Link>
                 <GoldButton variant="outline" className="border-white/10 text-white hover:bg-white/5 px-16 py-7 text-base">
                   Contact Concierge
                 </GoldButton>
